@@ -97,7 +97,7 @@ filterError라는 네이밍을 통해 해당 함수가 하는 일을 파악하�
 bool 타입의 변수명에 Not이라는 부정이 들어가게 되니 해당 값의 정확한 의도를 바로 파악하기 어려움 해당 값이 false일 경우 부정의 부정이 되기 때문에 "충분한 재고여부가 있나"를 네이밍으로 선정하여 최대한 직관적으로 판단할 수 있게 고려하였습니다.
 3. `func checkStock(juice: Juice) throws -> Bool` ➡️  `func checkEnoughStock(juice: Juice) throws -> Bool`
 checkStock이 return하는 값이 정확이 어떤 의미를 가지는지 한눈에 파악하기 어렵기 때문에 true인 경우는 어떤 상황인지, false인 경우는 어떤상황인지 빠르고 명확하게 확인할 수 있도록 개선하였습니다.
-</details>details>
+</details>
 
 ### Step - 2
 
