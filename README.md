@@ -28,6 +28,7 @@
 ## 🕖 타임라인
 
 Step - 1 : 2022.08.29 ~ 09.01
+
 Step - 2 : 2022.09.01 ~ 09.06
 
 
@@ -35,6 +36,7 @@ Step - 2 : 2022.09.01 ~ 09.06
 ## 💻 실행 화면 
 
 Step-2 
+
 ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/59204352/189255897-e370be93-acf3-485f-addf-d1b3de3b36f1.gif)
 
 
@@ -72,13 +74,13 @@ func bringValidFruitStock(_ fruit: Fruit) -> Int { ... }
 
 
 
-#### 2. 매직넘버와 같은 namespace 상수를 enum으로 묶을지 struct로 묶을지에 대한 고민
+#### ***2. 매직넘버와 같은 namespace 상수를 enum으로 묶을지 struct로 묶을지에 대한 고민***
 각각의 주스를 만들 때 필요한 과일의 개수를 모아놓은 namespace를 구현할 때 내부의 프로퍼티를 static으로 선언하기 때문에 인스턴스를 만들필요가 없고 따라서 struct를 쓸 경우에는 초기화를 private로 해줘야했습니다. enum을 사용한다면 해당 부분을 신경쓸 필요가 없다고 생각해서 열거형으로 구현하였습니다.
 ```swift
 enum ConstantUsageFruit { ... }
 ```
 
-#### 3. 중첩타입 vs Computed Property
+#### 3. ***중첩타입 vs Computed Property***
 중첩타입을 사용을 해보고 싶어 Juice enum에서 구조체를 만들어 recipe내부를 구현을 했었습니다. 하지만 직접 Computed Property로만 구현하는 것이 더 깔끔하고 가독성이 좋아보여 아래와 같은 Computed Property를 사용하게 되었습니다.
 ```swift
 enum Juice: String {
@@ -90,7 +92,7 @@ enum Juice: String {
     }
 }
 ```
-#### 4. Naming 개선
+#### 4. ***Naming 개선***
 1. `func filterError(juice: Juice) -> Bool` ➡️ `func canManufactureJuice(juice: Juice) -> Bool`
 filterError라는 네이밍을 통해 해당 함수가 하는 일을 파악하기 어려움 따라서 음료제조를 할 수 있는지 없는지를 판단할 수 있는 네이밍인 `func canManufactureJuice(juice: Juice)`로 수정하였습니다.
 2. `let isNotSoldOut` ➡️ `var isEnoughStock: Bool = false`
@@ -98,6 +100,8 @@ bool 타입의 변수명에 Not이라는 부정이 들어가게 되니 해당 �
 3. `func checkStock(juice: Juice) throws -> Bool` ➡️  `func checkEnoughStock(juice: Juice) throws -> Bool`
 checkStock이 return하는 값이 정확이 어떤 의미를 가지는지 한눈에 파악하기 어렵기 때문에 true인 경우는 어떤 상황인지, false인 경우는 어떤상황인지 빠르고 명확하게 확인할 수 있도록 개선하였습니다.
 </details>
+
+--------------------------
 
 ### Step - 2
 
@@ -120,6 +124,15 @@ Notification을 사용을 할 때는 화면과 다른 화면 사이에서 데이
 스토리보드만 이용하는 경우(Segue), 스토리 보드와 코드를 같이 이용하는 경우(Segue + identifier), 코드만 이용하는 경우 등등 다양한 기술이 존재하는데 어떤 방법을 선택해서 사용해야 하는지 고민하였습니다.
 팀원과 상의를 하거나, 회사에서 기존에 선호하는 방식에 따라서 한가지 방법으로 통일시키는 방향으로 화면 전환 방법을 선택해야 한다고 생각된다.
 
+#### ***4. 네이밍 수정***
+1. `@IBAction func func toModifyStockView(_ sender: Any)` ➡️ `@IBAction func modifyStockButtonTapped(_ sender: Any)`
+재고수정 버튼이 눌렸을 때 동작하는 액션 메서드이기 때문에 네이밍을 수정하였다.
+
 ## 📚 참고 링크
 https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
+
 https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html
+
+
+
+
