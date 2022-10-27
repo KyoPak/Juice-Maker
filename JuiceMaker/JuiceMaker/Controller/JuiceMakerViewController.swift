@@ -37,6 +37,8 @@ class JuiceMakerViewController: UIViewController {
     
     private func setupButtonDynamicType() {
         orderButtons.forEach { button in
+            button.titleLabel?.numberOfLines = 0
+            button.titleLabel?.lineBreakMode = .byWordWrapping
             button.titleLabel?.adjustsFontForContentSizeCategory = true
         }
     }
@@ -122,4 +124,30 @@ extension JuiceMakerViewController: ModifyStockDelegate {
         juiceMaker.passingChangedFruitStock(changedStock)
         setFruitStockLabelText()
     }
+}
+
+
+extension JuiceMakerViewController: UIAccessibilityReadingContent {
+    func accessibilityLineNumber(for point: CGPoint) -> Int {
+        return 10
+    }
+    
+    func accessibilityContent(forLineNumber lineNumber: Int) -> String? {
+        return ""
+    }
+    
+    func accessibilityFrame(forLineNumber lineNumber: Int) -> CGRect {
+        return CGRect(x: 10, y: 10, width: 10, height: 10)
+    }
+    
+    func accessibilityPageContent() -> String? {
+        var a = strawberryStockLabel.text
+        var b = bananaStockLabel.text
+        var c = pineappleStockLabel.text
+        var d = kiwiStockLabel.text
+        var e = mangoStockLabel.text
+        return "\(a),\(b),\(c),\(d),\(e)"
+    }
+    
+    
 }
