@@ -20,7 +20,16 @@ class JuiceMakerViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setFruitLabel()
+        setupLabelDynamicType()
         setFruitStockLabelText()
+    }
+    
+    private func setupLabelDynamicType() {
+        strawberryStockLabel.adjustsFontForContentSizeCategory = true
+        bananaStockLabel.adjustsFontForContentSizeCategory = true
+        pineappleStockLabel.adjustsFontForContentSizeCategory = true
+        kiwiStockLabel.adjustsFontForContentSizeCategory = true
+        mangoStockLabel.adjustsFontForContentSizeCategory = true
     }
     
     @IBAction func modifyStockButtonTapped(_ sender: Any) {

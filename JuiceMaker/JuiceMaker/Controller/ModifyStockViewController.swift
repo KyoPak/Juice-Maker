@@ -33,7 +33,16 @@ class ModifyStockViewController: UIViewController {
         setNavigationBar()
         setFruitUIAttribute()
         setFruitStockLabel()
+        setupLabelDynamicType()
         setStepperValue()
+    }
+    
+    private func setupLabelDynamicType() {
+        strawberryStockLabel.adjustsFontForContentSizeCategory = true
+        bananaStockLabel.adjustsFontForContentSizeCategory = true
+        pineappleStockLabel.adjustsFontForContentSizeCategory = true
+        kiwiStockLabel.adjustsFontForContentSizeCategory = true
+        mangoStockLabel.adjustsFontForContentSizeCategory = true
     }
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
