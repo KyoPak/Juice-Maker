@@ -16,11 +16,14 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
 
+    @IBOutlet var orderButtons: [UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setFruitLabel()
         setupLabelDynamicType()
+        setupButtonDynamicType()
         setFruitStockLabelText()
     }
     
@@ -30,6 +33,12 @@ class JuiceMakerViewController: UIViewController {
         pineappleStockLabel.adjustsFontForContentSizeCategory = true
         kiwiStockLabel.adjustsFontForContentSizeCategory = true
         mangoStockLabel.adjustsFontForContentSizeCategory = true
+    }
+    
+    private func setupButtonDynamicType() {
+        orderButtons.forEach { button in
+            button.titleLabel?.adjustsFontForContentSizeCategory = true
+        }
     }
     
     @IBAction func modifyStockButtonTapped(_ sender: Any) {
