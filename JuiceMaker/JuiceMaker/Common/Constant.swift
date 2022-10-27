@@ -1,5 +1,5 @@
 //
-//  ConstantNameSpace.swift
+//  Constant.swift
 //  JuiceMaker
 //
 //  Created by Kyo, TaeLee on 2022/09/01.

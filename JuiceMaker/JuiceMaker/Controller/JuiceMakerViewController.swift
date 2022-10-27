@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     var juiceMaker = JuiceMaker()
     private var fruitLabel: [Fruit : UILabel] = [:]
     
@@ -25,22 +25,6 @@ class JuiceMakerViewController: UIViewController {
         setupLabelDynamicType()
         setupButtonDynamicType()
         setFruitStockLabelText()
-    }
-    
-    private func setupLabelDynamicType() {
-        strawberryStockLabel.adjustsFontForContentSizeCategory = true
-        bananaStockLabel.adjustsFontForContentSizeCategory = true
-        pineappleStockLabel.adjustsFontForContentSizeCategory = true
-        kiwiStockLabel.adjustsFontForContentSizeCategory = true
-        mangoStockLabel.adjustsFontForContentSizeCategory = true
-    }
-    
-    private func setupButtonDynamicType() {
-        orderButtons.forEach { button in
-            button.titleLabel?.numberOfLines = 0
-            button.titleLabel?.lineBreakMode = .byWordWrapping
-            button.titleLabel?.adjustsFontForContentSizeCategory = true
-        }
     }
     
     @IBAction func modifyStockButtonTapped(_ sender: Any) {
@@ -126,28 +110,20 @@ extension JuiceMakerViewController: ModifyStockDelegate {
     }
 }
 
-
-extension JuiceMakerViewController: UIAccessibilityReadingContent {
-    func accessibilityLineNumber(for point: CGPoint) -> Int {
-        return 10
+extension JuiceMakerViewController {
+    private func setupLabelDynamicType() {
+        strawberryStockLabel.adjustsFontForContentSizeCategory = true
+        bananaStockLabel.adjustsFontForContentSizeCategory = true
+        pineappleStockLabel.adjustsFontForContentSizeCategory = true
+        kiwiStockLabel.adjustsFontForContentSizeCategory = true
+        mangoStockLabel.adjustsFontForContentSizeCategory = true
     }
     
-    func accessibilityContent(forLineNumber lineNumber: Int) -> String? {
-        return ""
+    private func setupButtonDynamicType() {
+        orderButtons.forEach { button in
+            button.titleLabel?.numberOfLines = 0
+            button.titleLabel?.lineBreakMode = .byWordWrapping
+            button.titleLabel?.adjustsFontForContentSizeCategory = true
+        }
     }
-    
-    func accessibilityFrame(forLineNumber lineNumber: Int) -> CGRect {
-        return CGRect(x: 10, y: 10, width: 10, height: 10)
-    }
-    
-    func accessibilityPageContent() -> String? {
-        var a = strawberryStockLabel.text
-        var b = bananaStockLabel.text
-        var c = pineappleStockLabel.text
-        var d = kiwiStockLabel.text
-        var e = mangoStockLabel.text
-        return "\(a),\(b),\(c),\(d),\(e)"
-    }
-    
-    
 }

@@ -11,7 +11,7 @@ protocol ModifyStockDelegate: AnyObject {
     func changeFruitStock(_ changedStock: [Fruit : Int])
 }
 
-class ModifyStockViewController: UIViewController {
+final class ModifyStockViewController: UIViewController {
     var fruitStock: [Fruit : Int] = [:]
     private var fruitUIAttribute: [Fruit : (label: UILabel, stepper: UIStepper, isChange: Bool)] = [:]
     weak var delegate: ModifyStockDelegate?
@@ -35,14 +35,6 @@ class ModifyStockViewController: UIViewController {
         setFruitStockLabel()
         setupLabelDynamicType()
         setStepperValue()
-    }
-    
-    private func setupLabelDynamicType() {
-        strawberryStockLabel.adjustsFontForContentSizeCategory = true
-        bananaStockLabel.adjustsFontForContentSizeCategory = true
-        pineappleStockLabel.adjustsFontForContentSizeCategory = true
-        kiwiStockLabel.adjustsFontForContentSizeCategory = true
-        mangoStockLabel.adjustsFontForContentSizeCategory = true
     }
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
@@ -98,5 +90,15 @@ class ModifyStockViewController: UIViewController {
         for (key, value) in fruitUIAttribute {
             value.stepper.value = Double(fruitStock[key, default: ConstantUsageFruit.invalidFruit])
         }
+    }
+}
+
+extension ModifyStockViewController {
+    private func setupLabelDynamicType() {
+        strawberryStockLabel.adjustsFontForContentSizeCategory = true
+        bananaStockLabel.adjustsFontForContentSizeCategory = true
+        pineappleStockLabel.adjustsFontForContentSizeCategory = true
+        kiwiStockLabel.adjustsFontForContentSizeCategory = true
+        mangoStockLabel.adjustsFontForContentSizeCategory = true
     }
 }
