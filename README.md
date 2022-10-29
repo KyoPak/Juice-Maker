@@ -36,6 +36,9 @@ Step - 2 : 2022.09.01 ~ 09.06
 
 Step - 3 : 2022.09.06 ~ 09.16
 
+Personal Code Refactoring : 2022.10.27 ~ 
+- `Dynamic Type` 적용
+
 ## 🗺 UML
 
 ![](https://i.imgur.com/oP3Cyo1.jpg)
